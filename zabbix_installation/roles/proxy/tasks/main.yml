@@ -4,7 +4,7 @@
   with_items:
     - zabbix-proxy-mysql
 - name: Configure zabbix proxy file /etc/zabbix/zabbix_proxy.conf
-  template: src=zabbix_proxy.conf.j2 dest=/etc/zabbix/zabbix_proxy.conf backup=yes
+  template: src={{ansible_distribution_major_version}}/zabbix_proxy.conf dest=/etc/zabbix/ backup=yes
   notify: restart zabbix proxy
 - name: Start zabbix proxy
   service: name=zabbix-proxy state=started enabled=yes

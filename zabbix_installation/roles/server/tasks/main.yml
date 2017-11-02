@@ -2,13 +2,15 @@
 - name: Install zabbix server
   yum: name={{item}} state=present disablerepo=* enablerepo=local
   with_items:
+    - httpd
+    - php*
     - zabbix-server-mysql
     - zabbix-web-mysql
 - name: Configure frontend file /etc/httpd/conf.d/zabbix.conf
-  template: src=zabbix.conf.j2 dest=/etc/httpd/conf.d/zabbix.conf 
+  template: src={{ansible_distribution_major_version}}/zabbix.conf dest=/etc/httpd/conf.d/
   notify: restart httpd
 - name: Configure zabbix server file /etc/zabbix/zabbix_server.conf
-  template: src=zabbix_server.conf.j2 dest=/etc/zabbix/zabbix_server.conf backup=yes
+  template: src={{ansible_distribution_major_version}}/zabbix_server.conf dest=/etc/zabbix/ backup=yes
   notify: restart zabbix server
 - name: Start httpd
   service: name=httpd state=started enabled=yes

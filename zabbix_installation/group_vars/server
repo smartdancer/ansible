@@ -1,6 +1,5 @@
 ---
 ## These are the variables for zabbix server configuration /etc/zabbix/zabbix_server.conf
-#dbhost: "{{db}}"
 dbhost: "{{db}}"
 dbname: zabbix
 dbuser: zabbix

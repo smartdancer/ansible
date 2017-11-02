@@ -23,7 +23,9 @@
 
 - name: Import zabbix server tables
   shell: zcat {{repo_path}}/create.sql.gz | mysql -h{{inventory_hostname}} -u{{db_user}} -p{{db_password}} {{db_name}}
+  ignore_errors: True
   when: inventory_hostname in groups['server_db']
 - name: Import zabbix proxy tables
   shell: zcat {{repo_path}}/schema.sql.gz | mysql -h{{inventory_hostname}} -u{{db_user}} -p{{db_password}} {{db_name}}
+  ignore_errors: True
   when: inventory_hostname in groups['proxy_db']

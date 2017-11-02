@@ -5,7 +5,7 @@
 - name: Install createrepo
   yum: name={{repo_path}}/createrepo/{{item}} state=present 
   with_items:
-    - libxml2-2.9.6-1.0.cf.rhel6.x86_64.rpm
+    - libxml2-2.7.6-21.el6_8.1.x86_64.rpm
     - libxml2-python-2.7.6-21.el6_8.1.x86_64.rpm
     - deltarpm-3.5-0.5.20090913git.el6.x86_64.rpm
     - python-deltarpm-3.5-0.5.20090913git.el6.x86_64.rpm

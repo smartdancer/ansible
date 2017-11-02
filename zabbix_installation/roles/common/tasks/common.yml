@@ -11,3 +11,7 @@
   notify: restart ntp
 - name: Start ntp service
   service: name=ntpd state=started
+
+- name: Stop iptables
+  service: name=iptables state=stopped enabled=no
+  when: ansible_distribution_major_version == '6'
