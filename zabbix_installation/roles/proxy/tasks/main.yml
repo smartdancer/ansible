@@ -1,0 +1,10 @@
+---
+- name: Install zabbix proxy
+  yum: name={{item}} state=present disablerepo=* enablerepo=local
+  with_items:
+    - zabbix-proxy-mysql
+- name: Configure zabbix proxy file /etc/zabbix/zabbix_proxy.conf
+  template: src=zabbix_proxy.conf.j2 dest=/etc/zabbix/zabbix_proxy.conf backup=yes
+  notify: restart zabbix proxy
+- name: Start zabbix proxy
+  service: name=zabbix-proxy state=started enabled=yes

@@ -1,0 +1,13 @@
+---
+- name: Install NTP 
+  yum: name=ntp state=present disablerepo=* enablerepo=local
+#- name: Instatll common dependencies(ansible module dependencies)
+#  yum: name={{item}} state=present
+#  with_items:
+#    - libselinux-python
+#    - libsemanage-python
+- name: Configure ntp file
+  template: dest=/etc/ntp.conf src=ntp.conf.j2
+  notify: restart ntp
+- name: Start ntp service
+  service: name=ntpd state=started

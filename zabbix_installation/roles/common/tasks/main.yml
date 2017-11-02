@@ -1,0 +1,9 @@
+---
+## This playbook contains common plays that will be run on all nodes.
+
+## Create local repo for zabbix server, proxy and mysql server
+- include_tasks: createrepo.yml
+
+## Common configuration for all nodes: ntp, dependencies.
+#- import_tasks: common.yml
+- include_tasks: common.yml

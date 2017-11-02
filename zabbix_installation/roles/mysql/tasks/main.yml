@@ -1,0 +1,29 @@
+---
+- name: Install MySQL server
+  yum: name=mysql-community-server state=present disablerepo=* enablerepo=local
+- name: Create MySQL data directory 
+  file: path={{db_datadir}} state=directory owner=mysql group=mysql
+- name: Configure my.cnf file
+  template: dest=/etc/my.cnf src=my.cnf.j2
+- name: Start MySQL process
+  service: name=mysqld state=started enabled=yes
+- name: Install module dependency
+  yum: name=MySQL-python state=present disablerepo=* enablerepo=local
+- name: Create database for zabbix
+  mysql_db: name={{db_name}} state=present collation=utf8_bin encoding=utf8 
+- name: Create db user for zabbix
+  mysql_user: name={{db_user}} state=present priv='zabbix.*:ALL' host='%' password={{db_password}}
+
+- name: Copy zabbix server tables to mysql server
+  copy: src=create.sql.gz dest={{repo_path}} force=no
+  when: inventory_hostname in groups['server_db']
+- name: Copy zabbix proxy tables to mysql  server
+  copy: src=schema.sql.gz dest={{repo_path}} force=no
+  when: inventory_hostname in groups['proxy_db']
+
+- name: Import zabbix server tables
+  shell: zcat {{repo_path}}/create.sql.gz | mysql -h{{inventory_hostname}} -u{{db_user}} -p{{db_password}} {{db_name}}
+  when: inventory_hostname in groups['server_db']
+- name: Import zabbix proxy tables
+  shell: zcat {{repo_path}}/schema.sql.gz | mysql -h{{inventory_hostname}} -u{{db_user}} -p{{db_password}} {{db_name}}
+  when: inventory_hostname in groups['proxy_db']

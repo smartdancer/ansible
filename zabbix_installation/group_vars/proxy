@@ -1,0 +1,10 @@
+---
+## These are the variables for zabbix proxy configuration /etc/zabbix/zabbix_proxy.conf
+server_ip: "{{groups['server'][0]}}"
+proxy_hostname: "{{inventory_hostname}}"
+proxy_port: 10051
+dbhost: "{{db}}"
+dbname: zabbix
+dbuser: zabbix
+dbport: 3306
+dbpassword: zabbix

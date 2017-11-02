@@ -1,0 +1,7 @@
+---
+- name: restart ntp
+  service: name=ntpd state=restarted
+- name: update repo data
+  command: createrepo --update {{repo_path}}
+- name: yum clean all
+  command: yum clean all

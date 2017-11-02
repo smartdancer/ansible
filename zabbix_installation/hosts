@@ -1,0 +1,47 @@
+# ## This is the format of the inventory.
+# [server]
+# 192.168.1.1 ansible_ssh_pass=1 db=192.168.1.11
+# 
+# [server_db]
+# 192.168.1.11 ansible_ssh_pass=1
+# 
+# 
+# [proxy]
+# 192.168.1.2 ansible_ssh_pass=1 db=192.168.1.21
+# 192.168.1.3 ansible_ssh_pass=1 db=192.168.1.31
+# 192.168.1.4 ansible_ssh_pass=1 db=192.168.1.41
+# 
+# 
+# [proxy_db]
+# 192.168.1.21 ansible_ssh_pass=1
+# 192.168.1.31 ansible_ssh_pass=1
+# 192.168.1.41 ansible_ssh_pass=1
+# 
+# ## Do not change this item
+# [alldb:children]
+# server_db
+# proxy_db
+
+
+[server]
+#192.168.178.130 ansible_ssh_pass=1 db=192.168.178.135
+192.168.178.130 ansible_ssh_pass=1 db=192.168.178.130
+
+[server_db]
+#192.168.178.135 ansible_ssh_pass=1
+192.168.178.130 ansible_ssh_pass=1
+
+
+[proxy]
+#192.168.178.136 ansible_ssh_pass=1 db=192.168.178.137
+192.168.178.136 ansible_ssh_pass=1 db=192.168.178.136
+#192.168.178.138 ansible_ssh_pass=1 db=192.168.178.139
+
+[proxy_db]
+#192.168.178.137 ansible_ssh_pass=1
+192.168.178.136 ansible_ssh_pass=1
+#192.168.178.139 ansible_ssh_pass=1
+
+[alldb:children]
+server_db
+proxy_db

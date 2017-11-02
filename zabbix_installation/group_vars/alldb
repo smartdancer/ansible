@@ -1,0 +1,8 @@
+---
+db_name: zabbix
+db_user: zabbix
+db_password: zabbix
+db_datadir: /var/lib/mysql
+db_socketdir: /var/lib/mysql/mysql.sock
+db_logerror: /var/log/mysqld.log
+db_pidfile: /var/run/mysqld/mysqld.pid

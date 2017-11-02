@@ -1,0 +1,6 @@
+---
+## Variables listed here are application to all host groups
+
+#ntpserver: 192.168.178.128
+ntpserver: "{{groups['server'][0]}}"
+repo_path: /opt/repo
