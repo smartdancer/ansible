@@ -1,2 +1,3 @@
-1. Remember to disable selinux and reboot
-2.
+# Install zabbix server
+. You must disable selinux and reboot the systems
+.

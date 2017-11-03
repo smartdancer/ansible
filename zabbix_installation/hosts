@@ -24,27 +24,23 @@
 
 
 [server]
-#192.168.178.130 ansible_ssh_pass=1 db=192.168.178.135
-#192.168.178.130 ansible_ssh_pass=1 db=192.168.178.130
-192.168.178.142 ansible_ssh_pass=1 db=192.168.178.143
+192.168.178.130 ansible_ssh_pass=1 db=192.168.178.135
+192.168.178.130 ansible_ssh_pass=1 db=192.168.178.130
 
 [server_db]
-#192.168.178.135 ansible_ssh_pass=1
-#192.168.178.130 ansible_ssh_pass=1
-192.168.178.143 ansible_ssh_pass=1
+192.168.178.135 ansible_ssh_pass=1
+192.168.178.130 ansible_ssh_pass=1
 
 
 [proxy]
-#192.168.178.136 ansible_ssh_pass=1 db=192.168.178.137
+192.168.178.136 ansible_ssh_pass=1 db=192.168.178.137
 #192.168.178.136 ansible_ssh_pass=1 db=192.168.178.136
-#192.168.178.138 ansible_ssh_pass=1 db=192.168.178.139
-192.168.178.144 ansible_ssh_pass=1 db=192.168.178.145
+192.168.178.138 ansible_ssh_pass=1 db=192.168.178.139
 
 [proxy_db]
-#192.168.178.137 ansible_ssh_pass=1
+192.168.178.137 ansible_ssh_pass=1
 #192.168.178.136 ansible_ssh_pass=1
-#192.168.178.139 ansible_ssh_pass=1
-192.168.178.145 ansible_ssh_pass=1
+192.168.178.139 ansible_ssh_pass=1
 
 [alldb:children]
 server_db
