@@ -7,7 +7,7 @@
 #    - libselinux-python
 #    - libsemanage-python
 - name: Configure ntp file
-  template: dest=/etc/ntp.conf src=ntp.conf.j2
+  template: src={{ansible_distribution_major_version}}/ntp.conf dest=/etc/ backup=yes
   notify: restart ntp
 - name: Start ntp service
   service: name=ntpd state=started
