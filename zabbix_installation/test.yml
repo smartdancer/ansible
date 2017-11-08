@@ -1,10 +1,16 @@
 ---
-- hosts: all
+#- hosts: all
 #  vars:
 #    db_host: "{{groups['server_db'][0]}}"
-  remote_user: root
+#  remote_user: root
 #  gather_facts: false
-  tasks:
+#  tasks:
 #    - name: debug the variables
 #      debug: msg="{{hostvars[groups['server_db'][0]]['ansible_all_ipv4_addresses']}},{{groups['mysql']}},{{group_names}}"
-    - debug: msg="{{db_datadir}}"
+#    - debug: msg="{{db_datadir}}"
+#
+- hosts: 192.168.178.142
+  remote_user: root
+  gather_facts: false
+  roles: 
+    - common

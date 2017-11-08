@@ -1,19 +1,18 @@
 ---
 ## Apply common configuration to all nodes,like local yum repo,pull packs and time synchronize
 - name: Pre-tasks copy packs, create local repository, make time synchronized
-#  hosts: all
-  hosts: server
+  hosts: all
   remote_user: root
   roles:
     - common
 
 
-## Install mysql server and zabbix server
-#- name: Install MySQL server for Zabbix SERVER
-#  hosts: server_db
-#  remote_user: root
-#  roles: 
-#    - mysql
+# Install mysql server and zabbix server
+- name: Install MySQL server for Zabbix SERVER
+  hosts: server_db
+  remote_user: root
+  roles: 
+    - mysql
 - name: Install zabbix SERVER
   hosts: server
   remote_user: root
@@ -21,14 +20,14 @@
     - server
 
 
-### Install mysql server and zabbix proxy
-#- name: Install MySQL server for Zabbix PROXY
-#  hosts: proxy_db
-#  remote_user: root
-#  roles: 
-#    - mysql
-#- name: Install Zabbix PROXY
-#  hosts: proxy
-#  remote_user: root
-#  roles:
-#    - proxy
+## Install mysql server and zabbix proxy
+- name: Install MySQL server for Zabbix PROXY
+  hosts: proxy_db
+  remote_user: root
+  roles: 
+    - mysql
+- name: Install Zabbix PROXY
+  hosts: proxy
+  remote_user: root
+  roles:
+    - proxy
